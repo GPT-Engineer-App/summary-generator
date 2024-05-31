@@ -7,25 +7,24 @@ const Index = () => {
   const [summary, setSummary] = useState("");
 
   const handleSummarize = () => {
-    // Simple summarization logic (for demonstration purposes)
     const sentences = text.split(". ");
     const summaryText = sentences.slice(0, Math.ceil(sentences.length / 2)).join(". ") + (sentences.length > 1 ? "." : "");
     setSummary(summaryText);
   };
 
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-      <VStack spacing={4} width="100%">
-        <Heading as="h1" size="xl">
+    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center" bg="background.light">
+      <VStack spacing={8} width="100%">
+        <Heading as="h1" size="2xl" color="text.primary">
           Text Summarizer
         </Heading>
         <Textarea placeholder="Enter your text here..." value={text} onChange={(e) => setText(e.target.value)} size="lg" />
-        <Button leftIcon={<FaRegClipboard />} colorScheme="teal" onClick={handleSummarize}>
+        <Button leftIcon={<FaRegClipboard />} colorScheme="accent" onClick={handleSummarize}>
           Summarize
         </Button>
         {summary && (
-          <Box p={4} borderWidth={1} borderRadius="md" width="100%">
-            <Heading as="h2" size="md">
+          <Box p={4} borderWidth={1} borderRadius="md" width="100%" bg="background.dark">
+            <Heading as="h2" size="lg" color="text.secondary">
               Summary
             </Heading>
             <Text mt={2}>{summary}</Text>
